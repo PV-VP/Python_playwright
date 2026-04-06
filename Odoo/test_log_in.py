@@ -1,7 +1,6 @@
 import pytest
 from playwright.sync_api import expect
 
-
 def test_log_in(page):
     page.goto('https://odoo-todo-dev.viyar.tech/')
 
