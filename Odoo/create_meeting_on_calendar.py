@@ -1,9 +1,12 @@
 import os
+import random
+import string
 
 from dotenv import load_dotenv
 from playwright.sync_api import expect
 
 load_dotenv()
+random_name = "Meeting " + "".join(random.choices(string.ascii_letters, k=6))
 
 def test_log_in(page):
     page.goto(os.environ["APP_URL"])
@@ -16,3 +19,5 @@ def test_log_in(page):
     page.get_by_title("Головне меню").click()
     page.get_by_title("Календар").click()
     page.get_by_role("button", name="Новий").click()
+    page.get_by_placeholder("напр. Бізнес ланч").fill(random_name)
+    page.locator("i.fa-cloud-upload").click()
