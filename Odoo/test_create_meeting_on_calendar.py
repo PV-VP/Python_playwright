@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 from playwright.sync_api import expect
 
 load_dotenv()
-random_name = "Meeting " + "".join(random.choices(string.ascii_letters, k=6))
+
 
 def test_log_in(page):
+    random_name = "Meeting " + "".join(random.choices(string.ascii_letters, k=6))
+    random_fill = "".join(random.choices(string.ascii_letters, k=80))
+
     page.goto(os.environ["APP_URL"])
     page.get_by_role("link", name="Увійти").click()
     page.get_by_role("link", name="Увійти за допомогою Keycloak").click()
@@ -20,4 +23,6 @@ def test_log_in(page):
     page.get_by_title("Календар").click()
     page.get_by_role("button", name="Новий").click()
     page.get_by_placeholder("напр. Бізнес ланч").fill(random_name)
+    page.locator("#description_0").click()
+    page.locator("#description_0").type(random_fill)
     page.locator("i.fa-cloud-upload").click()
