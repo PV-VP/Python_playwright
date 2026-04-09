@@ -3,12 +3,12 @@ import random
 import string
 
 from dotenv import load_dotenv
-from playwright.sync_api import expect
+from playwright.sync_api import Page, expect
 
 load_dotenv()
 
 
-def test_log_in(page):
+def test_log_in(page:Page):
     random_name = "Meeting " + "".join(random.choices(string.ascii_letters, k=6))   # рандомні данні для назви зустрічі
     random_fill = "".join(random.choices(string.ascii_letters, k=80))               # рандомні данні для опису зустрічі
 
