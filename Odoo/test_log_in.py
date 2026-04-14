@@ -5,8 +5,7 @@ from playwright.sync_api import expect
 
 load_dotenv()
 
-def test_log_in(page):
-    page.goto(os.environ["APP_URL"])
+def test_log_in(page, open_odoo):
     page.get_by_role("link", name="Увійти").click()
     page.get_by_role("link", name="Увійти за допомогою Keycloak").click()
     page.locator("#username").fill(os.environ["TEST_USER"])
