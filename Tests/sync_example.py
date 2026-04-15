@@ -5,7 +5,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)  #headless=False - что бы страница открылась
     page = browser.new_page()
     page.goto('https://viyar.ua/ua/')
-    page.screenshot(path='screenshot/homepage.png')
+    page.screenshot(path='../screenshot/homepage.png')
     browser.close()
 
 

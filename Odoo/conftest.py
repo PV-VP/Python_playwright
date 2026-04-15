@@ -7,7 +7,7 @@ from playwright.sync_api import Page, expect
 
 load_dotenv()
 
-@pytest.fixture
+@pytest.fixture     # логін
 def open_odoo(page: Page):                  #фікстура, тобто прекондішн. Кажем шо спочатку треба перейти на сайт, а в функції нижче передаеєм як параметр. Якщо додати аутоюз=тру, то буде запускатись при кожному тесту, можно в параметр не передавати
     page.goto(os.environ["APP_URL"])
     page.get_by_role("link", name="Увійти").click()
