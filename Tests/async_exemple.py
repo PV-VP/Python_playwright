@@ -11,6 +11,6 @@ async def main():
         browser = await p.chromium.launch(headless=False)
         page = await browser.new_page()
         await page.goto('https://viyar.ua/ua/catalog/')
-        await page.screenshot(path = 'screenshot/catalogue.png')
+        await page.screenshot(path ='../screenshot/catalogue.png')
         await browser.close()
 asyncio.run(main())
