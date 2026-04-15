@@ -16,7 +16,8 @@ def test_create_task(page, open_odoo):
     page.get_by_placeholder("Вкажіть назву задачі").fill(generate_task_name())  #заповнюєм назву довільно
     page.locator("span.vsd_placeholder", has_text="Виберіть значення").click()  #вибрати приорітет задачі
     page.locator(".selection_item", has_text="Низький").click()                 #натиснути на пріоритет
-    page.get_by_placeholder("0").first.fill(generate_fibonacci())                              #
-
+    page.get_by_placeholder("0").first.fill(generate_fibonacci())               # Story point (план) - заповнює числами фібоначі(рандом)
+    page.locator(".crnd_widget_vr_start_date").first.fill("08.08.2026")         # First date field
+    page.locator(".date_widget_input input").last.fill("08.08.2026")            # Last date field
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
