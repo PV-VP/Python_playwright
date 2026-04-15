@@ -1,7 +1,7 @@
 import random
 import string
 from playwright.sync_api import Page, expect
-from helpers import generate_task_name
+from helpers import generate_task_name, generate_fibonacci
 
 def test_create_task(page, open_odoo):
 
@@ -16,6 +16,7 @@ def test_create_task(page, open_odoo):
     page.get_by_placeholder("Вкажіть назву задачі").fill(generate_task_name())  #заповнюєм назву довільно
     page.locator("span.vsd_placeholder", has_text="Виберіть значення").click()  #вибрати приорітет задачі
     page.locator(".selection_item", has_text="Низький").click()                 #натиснути на пріоритет
+    page.get_by_placeholder("0").first.fill(generate_fibonacci())                              #
 
 
-    page.screenshot(path="../screenshot/task.png")
+    page.screenshot(path="../screenshot/task.png") #робим скрін
