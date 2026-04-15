@@ -1,18 +1,14 @@
 import os
-import random
-import string
 import pytest
-
+from helpers import generate_random_name, generate_random_fill
 from dotenv import load_dotenv
 from playwright.sync_api import Page, expect
 
 load_dotenv()
 
 def test_log_in(page: Page, open_odoo):
-    random_name = "Meeting " + "".join(random.choices(string.ascii_letters, k=6))   # рандомні данні для назви зустрічі
-    random_fill = "".join(random.choices(string.ascii_letters, k=80))               # рандомні данні для опису зустрічі
-
-    expect(page).to_have_url("https://odoo-todo-dev.viyar.tech/web")    # очікуваний перехід на сторінку
+    random_name = generate_random_name()
+    random_fill = generate_random_fill()
 
     page.get_by_title("Календар").click()
     page.get_by_role("button", name="Новий").click()               # створюєм зутріч

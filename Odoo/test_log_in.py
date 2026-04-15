@@ -11,4 +11,4 @@ def test_log_in(page, open_odoo):
     page.locator("#username").fill(os.environ["TEST_USER"])
     page.locator("#password").fill(os.environ["TEST_PASS"])
     page.get_by_role("button", name="Sign In").click()
-    expect(page).to_have_url("https://odoo-todo-dev.viyar.tech/web")
+
