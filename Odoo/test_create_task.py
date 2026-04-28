@@ -1,5 +1,4 @@
-import random
-import string
+
 from playwright.sync_api import Page, expect
 from helpers import generate_task_name, generate_fibonacci
 
@@ -17,7 +16,9 @@ def test_create_task(page, open_odoo):
     page.locator("span.vsd_placeholder", has_text="Виберіть значення").click()  #вибрати приорітет задачі
     page.locator(".selection_item", has_text="Низький").click()                 #натиснути на пріоритет
     page.get_by_placeholder("0").first.fill(generate_fibonacci())               # Story point (план) - заповнює числами фібоначі(рандом)
-    page.locator(".crnd_widget_vr_start_date").first.fill("08.08.2026")         # First date field
-    page.locator(".date_widget_input input").last.fill("08.08.2026")            # Last date field
-
+    page.locator("#crnd_widget_vr_start_date input").fill("08.08.2015")
+    page.locator("#crnd_widget_deadline_date input").fill("08.08.2026")
+    page.locator(".note-editable").click()
+    page.keyboard.type('321')
+    page.get_by_role("button", name="Поставити задачу").click()
     page.screenshot(path="../screenshot/task.png") #робим скрін
