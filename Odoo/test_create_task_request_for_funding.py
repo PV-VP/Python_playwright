@@ -1,8 +1,8 @@
 
 from playwright.sync_api import Page, expect
-from helpers import generate_task_name, generate_fibonacci
+from helpers import generate_random_name
 
-def test_create_task(page, open_odoo):
+def test_create_task(page:Page, open_odoo):
 
 
     page.get_by_title("Створити Задачу/Заявку").click()                         #клікаєм Створити Задачу/Заявку
@@ -12,6 +12,9 @@ def test_create_task(page, open_odoo):
     page.get_by_text("Пошук...").blur()                                         #убираєм фокус з пошуку
     page.locator("button.creation_form_tabs_item", has_text="Заявки на кошти").click() #Вибір Групи Шаблонів(форма заявки)
     page.get_by_text("Заявка на кошти готівкою", exact=True).click()
+    page.get_by_placeholder("Вкажіть іншу особу, якщо виконавець не є співробітником компанії").fill(generate_random_name())
+
+
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
 
