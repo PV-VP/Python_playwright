@@ -8,12 +8,10 @@ def test_create_task(page, open_odoo):
     page.get_by_title("Створити Задачу/Заявку").click()                         #клікаєм Створити Задачу/Заявку
     page.get_by_role("button", name="Нова").click()                             #створюєм натиска.чи кнопку Нова
     page.get_by_text("Пошук...").click()                                        #віжкриваєм список підрозділів
-    expect(page.get_by_text("Казначейство")).to_be_visible()                    #очікуєм що буде Казначейство
-    page.locator(".selection_item", has_text="Казначейство").click()            #жмем Казначейство
+    page.get_by_text("Казначейство", exact=True).click()                        #жмем Казначейство
     page.get_by_text("Пошук...").blur()                                         #убираєм фокус з пошуку
-    page.locator("button.creation_form_tabs_item", has_text="Загальні").click() #Вибір Групи Шаблонів(форма заявки)
-
+    page.locator("button.creation_form_tabs_item", has_text="Заявки на кошти").click() #Вибір Групи Шаблонів(форма заявки)
+    page.get_by_text("Заявка на кошти готівкою", exact=True).click()
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
 
-    #поки не працює, буде перероблюватись логіка
