@@ -14,6 +14,8 @@ def test_create_task(page:Page, open_odoo):
     page.get_by_text("Заявка на кошти готівкою", exact=True).click()      #вибераэм готівку
     page.get_by_placeholder("Вкажіть іншу особу, якщо виконавець не є співробітником компанії").fill(generate_random_name())
     page.get_by_placeholder("Вкажіть призначення платежу").fill(generate_random_fill_20_symbols())
+    page.get_by_text("Оберіть філію, до якої буде віднесено вашу витрату").click()
+    page.get_by_text("Без філії", exact=True).click()
 
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
