@@ -3,13 +3,13 @@ import string
 
 
 def generate_task_name():
-    return  "Task " + "".join(random.choices(string.ascii_letters, k=16))  # рандомні данні для назви задачі
+    return  "Task " + "".join(random.choices(string.ascii_letters, k=16))
 
 def generate_random_name():
-    return  "Meeting " + "".join(random.choices(string.ascii_letters, k=6))  # рандомні данні для назви зустрічі
+    return  "Meeting " + "".join(random.choices(string.ascii_letters, k=6))
 
 def generate_random_fill():
-    return  "".join(random.choices(string.ascii_letters, k=80))  # рандомні данні для опису зустрічі
+    return  "".join(random.choices(string.ascii_letters, k=80))
 
 def generate_random_digit():
     return str((random.randint(1, 21)))
