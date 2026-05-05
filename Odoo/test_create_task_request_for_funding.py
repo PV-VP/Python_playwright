@@ -23,7 +23,11 @@ def test_create_task(page:Page, open_odoo):
     page.wait_for_timeout(800)
     page.locator("#crnd_widget_vr_cash_withdrawal_affiliate_id").get_by_text("Новокостянтинівська", exact=True).click()
 
-    page.get_by_placeholder("Вкажіть суму оплати").fill(generate_random_digit())
+    page.get_by_placeholder("Вкажіть суму оплати").fill(generate_random_digit())                    #заповнюєм сумму оплати
+    page.get_by_placeholder("Вкажіть суму оплати").blur()
+    page.get_by_text("Оберіть валюту оплати").click()
+    page.get_by_text("USD", exact=True).click()
+
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
 
