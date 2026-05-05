@@ -1,6 +1,6 @@
 import os
 import pytest
-from playwright.sync_api import Page, expect
+
 
 from dotenv import load_dotenv
 from playwright.sync_api import Page, expect
