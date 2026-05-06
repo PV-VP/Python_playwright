@@ -1,6 +1,8 @@
 import random
 import string
 
+from datetime import date, timedelta
+
 
 def generate_task_name():
     return  "Task " + "".join(random.choices(string.ascii_letters, k=16))
@@ -25,3 +27,9 @@ def generate_fibonacci():
 
     fib = [x for x in fib if x <= 21]
     return str(random.choice(fib))
+
+
+def random_future_date(days_range=365):
+    today = date.today()
+    random_days = random.randint(1, days_range)
+    return (today + timedelta(days=random_days)).strftime("%d.%m.%Y")

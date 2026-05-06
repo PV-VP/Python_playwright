@@ -1,6 +1,6 @@
-
+import time
 from playwright.sync_api import Page, expect
-from helpers import generate_random_name, generate_random_fill_20_symbols, generate_random_digit
+from helpers import generate_random_name, generate_random_fill_20_symbols, generate_random_digit, random_future_date
 
 def test_create_task(page:Page, open_odoo):
 
@@ -23,7 +23,10 @@ def test_create_task(page:Page, open_odoo):
     page.get_by_text("USD", exact=True).click()
     page.locator("#crnd_widget_vr_name_functional_cost_unit_id").click() #Підрозділ витрати
     page.locator("#crnd_widget_vr_name_functional_cost_unit_id").get_by_text("Адміністрація Новокостянтинівська", exact=True).click()
-    page.get_by_placeholder("Пошук проєкту витрат...").fill(generate_random_fill_20_symbols())
-
+    #не уверен что ниже работает
+    page.get_by_placeholder("Пошук проєкту витрат...").fill(generate_random_fill_20_symbols()) #Проєкт витрати
+    page.check('div.boolean_input input[type="checkbox"]') #Потрібна термінова оплата?
+    page.get_by_placeholder("Оберіть бажану дату оплати").fill(random_future_date())  #Планова датаоплати
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
+    time.sleep(60)
