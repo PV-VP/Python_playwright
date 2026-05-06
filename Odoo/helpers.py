@@ -12,7 +12,7 @@ def generate_random_fill():
     return  "".join(random.choices(string.ascii_letters, k=80))
 
 def generate_random_digit():
-    return str((random.randint(1, 21)))
+    return str((random.randint(1, 10000)))
 
 def generate_random_fill_20_symbols():
     return  "".join(random.choices(string.ascii_letters, k=20))
