@@ -24,9 +24,9 @@ def test_create_task(page:Page, open_odoo):
     page.locator("#crnd_widget_vr_name_functional_cost_unit_id").click() #Підрозділ витрати
     page.locator("#crnd_widget_vr_name_functional_cost_unit_id").get_by_text("Адміністрація Новокостянтинівська", exact=True).click()
     #не уверен что ниже работает
-    page.get_by_placeholder("Пошук проєкту витрат...").fill(generate_random_fill_20_symbols()) #Проєкт витрати
-    page.check('div.boolean_input input[type="checkbox"]') #Потрібна термінова оплата?
-    page.get_by_placeholder("Оберіть бажану дату оплати").fill(random_future_date())  #Планова датаоплати
+    #page.get_by_placeholder("Пошук проєкту витрат...").fill('000010228') #Проєкт витрати
+    #page.locator('text=000010228').click()
+    page.locator('#crnd_widget_deadline_date input').type('08.08.1986', delay=100)
+    page.locator('#crnd_widget_deadline_date input').press('Enter')
 
     page.screenshot(path="../screenshot/task.png") #робим скрін
-    time.sleep(60)
